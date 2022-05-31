@@ -1,0 +1,10 @@
+name: 'create-pull-request-from-issue'
+description: 'Creates an empty pull request from the card issue when moving into In Progress column'
+inputs:
+  token:
+    description: 'The repository authentication token'
+    required: true
+
+runs:
+  using: 'node12'
+  main: 'index.js' 

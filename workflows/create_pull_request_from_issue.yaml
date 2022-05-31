@@ -1,0 +1,22 @@
+name: Creates an empty pull request from an issue
+
+on:
+  project_card:
+    types: [moved]
+
+jobs:
+  create_pull_request:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Setup Github Actions
+      uses: actions/checkout@v2
+
+    - name: Install required NPM dependencies
+      run: npm install
+      working-directory: ./.github
+
+    - name: Create a pull request from the issue
+      uses: ./.github/actions/create_pull_request_from_issue/
+      with:
+        token: ${{ secrets.PERSONAL_ACCESS_TOKEN }}
